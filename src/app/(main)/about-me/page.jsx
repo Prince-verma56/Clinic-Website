@@ -56,7 +56,7 @@ export default function AboutDoctor() {
                 <Link href="/" passHref>
                     <Button
                         variant="outline"
-                        className="cursor-pointer px-4 flex items-center gap-3 bg-gradient-to-r from-[#f2e8dc] to-[#e5d0b8] text-[#3b2f2f] font-bold rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 hover:from-[#e5d0b8] hover:to-[#d8b58f]"
+                        className="fixed top-12 left-20 cursor-pointer px-4 flex items-center gap-3 bg-gradient-to-r from-[#f2e8dc] to-[#e5d0b8] text-[#3b2f2f] font-bold rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 hover:from-[#e5d0b8] hover:to-[#d8b58f]"
                     >
                         <ArrowLeft size={18} className="text-[#3b2f2f] font-bold" />
                         Back
@@ -132,7 +132,7 @@ export default function AboutDoctor() {
                         transition={{ delay: 1.4, duration: 0.8, ease: "easeOut" }}
                     >
                         <div>
-                            <h4 className="uppercase text-sm font-semibold tracking-wider mb-1 text-gray-700">
+                            <h4 className="uppercase text-lg font-bold tracking-wider mb-1 text-gray-700">
                                 Holistic Healing Approach
                             </h4>
                             <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
@@ -142,7 +142,7 @@ export default function AboutDoctor() {
                         </div>
 
                         <div>
-                            <h4 className="uppercase text-sm font-semibold tracking-wider mb-1 text-gray-700">
+                            <h4 className="uppercase text-md font-bold tracking-wider mb-1 text-gray-700">
                                 Trusted Worldwide
                             </h4>
                             <p className="text-gray-700 text-sm sm:text-base leading-relaxed">

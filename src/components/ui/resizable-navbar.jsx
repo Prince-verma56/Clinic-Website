@@ -1,5 +1,6 @@
 "use client";
 
+import { MapPin, Phone, User } from "lucide-react"; // import relevant icons
 import React, { useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -28,11 +29,12 @@ export const Navbar = () => {
     }
   });
 
-  const navItems = [
-    { name: "Find Us", href: "/find-us" },
-    { name: "Contact Us", href: "/contact-us" },
-    { name: "About Me", href: "/about-me" },
-  ];
+
+const navItems = [
+  { name: "Find Us", href: "/find-us", icon: MapPin },
+  { name: "Contact Us", href: "/contact-us", icon: Phone },
+  { name: "About Me", href: "/about-me", icon: User },
+];
 
   return (
     <AnimatePresence>
@@ -50,7 +52,7 @@ export const Navbar = () => {
       >
         {/* Left Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          {/* <Image src="/logo.png" alt="Healpoint" width={30} height={30} /> */}
+          <Image src="/images/icons/HealPointLogo.png" alt="Healpoint" width={50} height={50} />
           <span className="font-semibold text-lg text-gray-800 dark:text-white">
             Healpoint
           </span>
@@ -58,21 +60,26 @@ export const Navbar = () => {
 
         {/* Desktop Nav Links */}
         <div className="hidden items-center space-x-6 text-sm font-medium text-gray-700 dark:text-gray-300 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="transition hover:text-black dark:hover:text-white"
-            >
-              {item.name}
-            </Link>
-          ))}
-          <span className="text-gray-300">|</span>
-          <select className="bg-transparent text-gray-700 dark:text-gray-200 focus:outline-none">
-            <option>EN</option>
-            <option>HI</option>
-          </select>
-        </div>
+  {navItems.map((item) => {
+    const Icon = item.icon;
+    return (
+      <Link
+        key={item.name}
+        href={item.href}
+        className="flex items-center space-x-1 transition hover:text-black dark:hover:text-white"
+      >
+        <Icon size={16} />
+        <span>{item.name}</span>
+      </Link>
+    );
+  })}
+  <span className="text-gray-300">|</span>
+  <select className="bg-transparent text-gray-700 dark:text-gray-200 focus:outline-none">
+    <option>EN</option>
+    <option>HI</option>
+  </select>
+</div>
+
 
         {/* Right Button */}
         <Link href="/contact">
