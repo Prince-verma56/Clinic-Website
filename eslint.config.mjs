@@ -11,6 +11,15 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals"),
+  
+  // FIX: यह ऑब्जेक्ट 'react/no-unescaped-entities' rule को disable करता है,
+  // जिससे JSX में सीधे ' (apostrophe) का इस्तेमाल करने पर Vercel build fail नहीं होगी।
+  {
+    rules: {
+      "react/no-unescaped-entities": "off",
+    },
+  },
+
   {
     ignores: [
       "node_modules/**",

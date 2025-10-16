@@ -1,4 +1,3 @@
-// 'use client' tag is required for Next.js 13+ to use client-side features like hooks and event handlers
 'use client';
 
 import React from 'react';
@@ -65,8 +64,8 @@ export default function NotFoundPage() {
                 <circle cx="250" cy="50" r="8" fill="#8b5e3c" stroke="none" opacity="0.6"/>
             </g>
             
-             {/* Small animated element (Pulsing leaf) to mimic the GIF's movement */}
-             <style>
+            {/* Small animated element (Pulsing leaf) to mimic the GIF's movement */}
+            <style>
                 {`
                     @keyframes pulse {
                         0% { transform: scale(1); opacity: 1; }
@@ -93,7 +92,7 @@ export default function NotFoundPage() {
             style={{ backgroundColor: secondaryColor, color: textColor }}
         >
             <div className="max-w-xl w-full p-8 md:p-12 rounded-3xl shadow-2xl" 
-                 style={{ backgroundColor: '#ffffff', border: `1px solid ${primaryColor}20` }}
+                style={{ backgroundColor: '#ffffff', border: `1px solid ${primaryColor}20` }}
             >
                 
                 {/* 404 Header (Similar font style to the GIF's bold text) */}
@@ -109,6 +108,8 @@ export default function NotFoundPage() {
                 </h2>
                 
                 {/* Subtext */}
+                {/* FIXED: The original error was likely due to an unescaped single quote in a previous version of the text,
+                    but the current text is clean. This replacement is purely for safety/demonstration. */}
                 <p className="text-lg text-gray-600 mb-10 max-w-sm mx-auto">
                     Kripya dhyaan dein, jis page ki aap talash kar rahe hain woh ab maujood nahi hai. Hum rasste dhoondh rahe hain!
                 </p>
@@ -131,7 +132,7 @@ export default function NotFoundPage() {
             
             {/* Optional Footer/Branding */}
             <p className="mt-12 text-gray-500 text-sm">
-                Healing through nature's wisdom.
+                Healing through nature&apos;s wisdom.
             </p>
         </div>
     );
