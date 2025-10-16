@@ -12,47 +12,56 @@ export async function POST(request) {
   try {
     const { name, email, phone, message, date, time } = await request.json();
 
-    const clinicLogo = "/images/icons/HealPointLogo.png"; // Replace with your logo URL
+    const clinicLogo = "https://yourdomain.com/images/icons/HealPointLogo.png"; // 🔁 Use full URL after deploy
     const primaryColor = "#8b5e3c";
     const accentColor = "#f1b52b";
 
     // 📨 1. Email to Clinic Admin
     await resend.emails.send({
-      from: "Dr. Devesh Clinic <onboarding@resend.dev>",
+      from: "Dr. Devesh Clinic <onboarding@yourdomain.com>", // use your verified domain
       to: "pvcodingz96@gmail.com",
-      subject: `🩺 New Patient Inquiry — ${name}`,
+      subject:
+        name === "Website Visitor"
+          ? "📩 New Newsletter Subscription"
+          : `🩺 New Patient Inquiry — ${name}`,
       html: `
-      <div style="font-family: 'Segoe UI', Roboto, sans-serif; background-color:#fdfaf7; padding:40px 0; text-align:center;">
-        <table width="600" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.08); text-align:left;">
+      <div style="font-family:'Segoe UI',Roboto,sans-serif;background-color:#fdfaf7;padding:40px 0;text-align:center;">
+        <table width="600" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:left;">
           <tr>
-            <td style="padding:30px; background-color:${primaryColor}; color:white;">
-              <img src="${clinicLogo}" width="60" style="border-radius:50%; margin-right:10px; vertical-align:middle;" />
-              <span style="font-size:22px; font-weight:bold;">Dr. Devesh Homeopathy Clinic</span>
+            <td style="padding:30px;background-color:${primaryColor};color:white;">
+              <img src="${clinicLogo}" width="60" style="border-radius:50%;margin-right:10px;vertical-align:middle;" />
+              <span style="font-size:22px;font-weight:bold;">Dr. Devesh Homeopathy Clinic</span>
             </td>
           </tr>
           <tr>
-            <td style="padding:30px; color:#333;">
-              <h2 style="margin-bottom:12px; color:${primaryColor}; font-size:20px;">New Contact Form Submission</h2>
-              <p style="font-size:15px; line-height:1.6;">
+            <td style="padding:30px;color:#333;">
+              <h2 style="margin-bottom:12px;color:${primaryColor};font-size:20px;">
+                ${
+                  name === "Website Visitor"
+                    ? "New Newsletter Subscription"
+                    : "New Contact Form Submission"
+                }
+              </h2>
+              <p style="font-size:15px;line-height:1.6;">
                 <strong>👤 Name:</strong> ${name}<br/>
                 <strong>📧 Email:</strong> ${email}<br/>
-                <strong>📞 Phone:</strong> ${phone || 'N/A'}<br/>
-                <strong>📅 Preferred Date:</strong> ${date || 'N/A'}<br/>
-                <strong>⏰ Preferred Time:</strong> ${time || 'N/A'}
+                <strong>📞 Phone:</strong> ${phone || "N/A"}<br/>
+                <strong>📅 Date:</strong> ${date || "N/A"}<br/>
+                <strong>⏰ Time:</strong> ${time || "N/A"}
               </p>
 
-              <div style="margin:20px 0; padding:15px; background-color:#fff8e1; border-left:4px solid ${accentColor}; border-radius:8px;">
+              <div style="margin:20px 0;padding:15px;background-color:#fff8e1;border-left:4px solid ${accentColor};border-radius:8px;">
                 <strong>💬 Message:</strong>
-                <p style="margin:8px 0 0 0; font-style:italic; color:#444;">${message}</p>
+                <p style="margin:8px 0 0 0;font-style:italic;color:#444;">${message}</p>
               </div>
 
-              <p style="font-size:13px; color:#777; margin-top:30px;">
-                📍 Received via <strong>Clinic Website Contact Form</strong>
+              <p style="font-size:13px;color:#777;margin-top:30px;">
+                📍 Received via <strong>Clinic Website</strong>
               </p>
             </td>
           </tr>
           <tr>
-            <td style="background-color:#faf6f2; text-align:center; padding:15px; font-size:13px; color:#666;">
+            <td style="background-color:#faf6f2;text-align:center;padding:15px;font-size:13px;color:#666;">
               © ${new Date().getFullYear()} Dr. Devesh Clinic | All rights reserved.
             </td>
           </tr>
@@ -63,38 +72,49 @@ export async function POST(request) {
 
     // 💚 2. Email to User (confirmation)
     await resend.emails.send({
-      from: "Dr. Devesh Clinic <onboarding@resend.dev>",
+      from: "Dr. Devesh Clinic <onboarding@yourdomain.com>",
       to: email,
-      subject: "💚 Thank You for Contacting Dr. Devesh Clinic",
+      subject:
+        name === "Website Visitor"
+          ? "💚 Thank You for Subscribing to Our Wellness Updates"
+          : "💚 Thank You for Contacting Dr. Devesh Clinic",
       html: `
-      <div style="font-family: 'Segoe UI', Roboto, sans-serif; background-color:#fdfaf7; padding:40px 0; text-align:center;">
-        <table width="600" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.08); text-align:left;">
+      <div style="font-family:'Segoe UI',Roboto,sans-serif;background-color:#fdfaf7;padding:40px 0;text-align:center;">
+        <table width="600" align="center" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);text-align:left;">
           <tr>
-            <td style="padding:30px; background-color:${primaryColor}; color:white;">
-              <img src="${clinicLogo}" width="60" style="border-radius:50%; margin-right:10px; vertical-align:middle;" />
-              <span style="font-size:22px; font-weight:bold;">Dr. Devesh Homeopathy Clinic</span>
+            <td style="padding:30px;background-color:${primaryColor};color:white;">
+              <img src="${clinicLogo}" width="60" style="border-radius:50%;margin-right:10px;vertical-align:middle;" />
+              <span style="font-size:22px;font-weight:bold;">Dr. Devesh Homeopathy Clinic</span>
             </td>
           </tr>
           <tr>
-            <td style="padding:30px; color:#333;">
-              <h2 style="color:${primaryColor};">Namaste ${name} 🙏</h2>
-              <p style="font-size:16px;">Thank you for reaching out to <strong>Dr. Devesh Clinic</strong>.</p>
-              <p>We have received your inquiry and our team will contact you soon.</p>
+            <td style="padding:30px;color:#333;">
+              <h2 style="color:${primaryColor};">Namaste ${
+        name === "Website Visitor" ? "" : name
+      } 🙏</h2>
+              <p style="font-size:16px;">Thank you for ${
+                name === "Website Visitor"
+                  ? "joining our newsletter!"
+                  : "reaching out to Dr. Devesh Clinic."
+              }</p>
 
-              <div style="margin:20px 0; padding:15px; background-color:#f9f3e7; border-left:4px solid ${accentColor}; border-radius:8px;">
-                <strong>Your Message:</strong>
-                <p style="margin-top:8px; font-style:italic;">${message}</p>
-              </div>
+              ${
+                name === "Website Visitor"
+                  ? `<p>We'll keep you updated with wellness tips and natural remedies 🌿</p>`
+                  : `<div style="margin:20px 0;padding:15px;background-color:#f9f3e7;border-left:4px solid ${accentColor};border-radius:8px;">
+                      <strong>Your Message:</strong>
+                      <p style="margin-top:8px;font-style:italic;">${message}</p>
+                    </div>
+                    <p><strong>📅 Preferred Date:</strong> ${date || "N/A"}</p>
+                    <p><strong>⏰ Preferred Time:</strong> ${time || "N/A"}</p>`
+              }
 
-              <p><strong>📅 Preferred Date:</strong> ${date || 'N/A'}</p>
-              <p><strong>⏰ Preferred Time:</strong> ${time || 'N/A'}</p>
-
-              <p style="margin-top:25px; color:#555;">Wishing you health and harmony,<br/>
+              <p style="margin-top:25px;color:#555;">Wishing you health and harmony,<br/>
               <strong style="color:${primaryColor};">🌿 The Homeopathy Clinic Team</strong></p>
             </td>
           </tr>
           <tr>
-            <td style="background-color:#faf6f2; text-align:center; padding:15px; font-size:13px; color:#666;">
+            <td style="background-color:#faf6f2;text-align:center;padding:15px;font-size:13px;color:#666;">
               📍 123 Healing Street, Wellness City<br/>
               © ${new Date().getFullYear()} Dr. Devesh Clinic | All rights reserved.
             </td>
@@ -109,22 +129,26 @@ export async function POST(request) {
       from: process.env.TWILIO_WHATSAPP_FROM,
       to: process.env.ADMIN_WHATSAPP_NUMBER,
       body: `
-🩺 *New Inquiry Received!*
+🩺 *${
+        name === "Website Visitor"
+          ? "New Newsletter Subscription!"
+          : "New Inquiry Received!"
+      }*
 
 👤 *Name:* ${name}
 📧 *Email:* ${email}
-📞 *Phone:* ${phone || 'N/A'}
-📅 *Preferred Date:* ${date || 'N/A'}
-⏰ *Preferred Time:* ${time || 'N/A'}
+📞 *Phone:* ${phone || "N/A"}
+📅 *Date:* ${date || "N/A"}
+⏰ *Time:* ${time || "N/A"}
 💬 *Message:* ${message}
 
-📍 _From: Clinic Website Contact Form_
+📍 _From: Clinic Website_
       `,
     });
 
     return NextResponse.json({
       success: true,
-      message: " Emails and WhatsApp sent successfully ✅",
+      message: "Emails and WhatsApp sent successfully ✅",
     });
   } catch (error) {
     console.error("Error in send-emails API:", error);

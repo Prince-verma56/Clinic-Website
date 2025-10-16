@@ -96,8 +96,8 @@ const HomeopathyHero = () => {
             ))}
 
             {/* Main Hero Content */}
-            <div ref={heroRef} className="relative max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20">
-                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center min-h-[calc(100vh-120px)]">
+            <div ref={heroRef} 
+ className="relative w-full max-w-9xl mx-auto px-6 sm:px-8 md:px-10 lg:px-16 xl:px-20 py-12 lg:py-20">                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center min-h-[calc(100vh-120px)]">
 
                     {/* Left Content - Enhanced Typography & Animations */}
                     <motion.div
@@ -258,7 +258,7 @@ const HomeopathyHero = () => {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                                 transition={{ duration: 0.8, delay: 1 }}
-                                className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center space-y-2 z-20 bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-[#8b5e3c]/10 shadow-lg"
+className="hidden md:block absolute bottom-10 left-1/2 -translate-x-1/2 text-center space-y-2 z-20 bg-white/70 backdrop-blur-sm p-4 rounded-xl border border-[#8b5e3c]/10 shadow-lg"
                             >
                                 <p className="text-xl font-bold bg-gradient-to-r from-[#8b5e3c] to-[#4CAF50] bg-clip-text text-transparent">
                                     Holistic 3D Experience

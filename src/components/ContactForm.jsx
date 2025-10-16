@@ -143,7 +143,7 @@ export default function ContactAndInfo() {
           <Link href="/" passHref>
             <Button
               variant="outline"
-              className=" fixed top-12 left-20 cursor-pointer px-4 flex items-center gap-3 bg-white/80 backdrop-blur-sm text-[#3b2f2f] font-bold rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 border-[#8b5e3c]/20"
+              className=" fixed lg:top-12 sm:top-8 lg:left-20 cursor-pointer px-4 flex items-center gap-3 bg-white/80 backdrop-blur-sm text-[#3b2f2f] font-bold rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 border-[#8b5e3c]/20"
             >
               <ArrowLeft size={18} className="text-[#3b2f2f]" />
               Back

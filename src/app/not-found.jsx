@@ -91,8 +91,15 @@ export default function NotFoundPage() {
             className="min-h-screen flex flex-col items-center justify-center p-6 text-center" 
             style={{ backgroundColor: secondaryColor, color: textColor }}
         >
-            <div className="max-w-xl w-full p-8 md:p-12 rounded-3xl shadow-2xl" 
-                style={{ backgroundColor: '#ffffff', border: `1px solid ${primaryColor}20` }}
+            <div className="max-w-xl w-full p-8 md:p-12 rounded-3xl shadow-2xl backdrop-blur-xl" 
+                style={{ 
+                    // Glamorphism: Semi-transparent cream background (80% opacity)
+                    backgroundColor: secondaryColor + 'd0', 
+                    // Slightly stronger, themed border
+                    border: `1px solid ${primaryColor}40`, 
+                    // Adjusted shadow for a lifted glass effect
+                    boxShadow: `0 25px 50px -12px ${primaryColor}50`, 
+                }}
             >
                 
                 {/* 404 Header (Similar font style to the GIF's bold text) */}
@@ -100,7 +107,7 @@ export default function NotFoundPage() {
                     404
                 </h1>
 
-                <LostHomieIllustration /> {/* Replaced old illustration */}
+                <LostHomieIllustration />
                 
                 {/* Main Message (Look like you're lost) */}
                 <h2 className="text-3xl md:text-4xl font-bold mb-3" style={{ color: textColor }}>
@@ -108,8 +115,6 @@ export default function NotFoundPage() {
                 </h2>
                 
                 {/* Subtext */}
-                {/* FIXED: The original error was likely due to an unescaped single quote in a previous version of the text,
-                    but the current text is clean. This replacement is purely for safety/demonstration. */}
                 <p className="text-lg text-gray-600 mb-10 max-w-sm mx-auto">
                     Kripya dhyaan dein, jis page ki aap talash kar rahe hain woh ab maujood nahi hai. Hum rasste dhoondh rahe hain!
                 </p>
