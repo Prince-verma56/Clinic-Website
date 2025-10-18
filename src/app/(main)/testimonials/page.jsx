@@ -1,5 +1,4 @@
-import { ContactForm } from '@/components/ContactForm'
-import { OurCustomers } from '@/components/OurCustomers'
+import OurCustomers from '@/components/OurCustomers'
 import React from 'react'
 
 function page() {

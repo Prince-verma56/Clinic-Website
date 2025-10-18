@@ -18,7 +18,7 @@ export async function POST(request) {
 
     // 📨 1. Email to Clinic Admin
     await resend.emails.send({
-      from: "Dr. Devesh Clinic <onboarding@yourdomain.com>", // use your verified domain
+      from: "Dr. Devesh Clinic <test@resend.dev>", // use your verified domain
       to: "pvcodingz96@gmail.com",
       subject:
         name === "Website Visitor"
@@ -72,7 +72,7 @@ export async function POST(request) {
 
     // 💚 2. Email to User (confirmation)
     await resend.emails.send({
-      from: "Dr. Devesh Clinic <onboarding@yourdomain.com>",
+      from: "Dr. Devesh Clinic <test@resend.dev>",
       to: email,
       subject:
         name === "Website Visitor"

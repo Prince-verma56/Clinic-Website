@@ -20,7 +20,7 @@ const stats = [
     { icon: Briefcase, label: "Years of Practice", value: 15, suffix: "+" },
     { icon: Users, label: "Happy Patients", value: 8000, suffix: "+" },
     { icon: Globe, label: "Online Consultations", value: 12, suffix: "+" },
-    { icon: Heart, label: "Success Rate", value: 97, suffix: "%" },
+    { icon: Heart, label: "Success Rate", value: 70, suffix: "%" },
 ];
 
 const charAnimation = {
