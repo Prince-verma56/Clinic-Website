@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// --- Homeopathy-focused Feature Data ---
+gsap.registerPlugin(ScrollTrigger);
+
 const features = [
   {
     id: 1,
@@ -12,7 +14,6 @@ const features = [
     description:
       "Personalized plans addressing your unique physical, mental, and emotional needs.",
     imageSrc: "/images/Doctor-pateint.png",
-    imageAlt: "A smiling, calm person representing holistic well-being.",
     accentColor: "text-[#8b5e3c]",
     borderColor: "border-[#f5e6db]",
   },
@@ -22,7 +23,6 @@ const features = [
     description:
       "Natural, non-toxic preparations tailored to stimulate your body's healing.",
     imageSrc: "/images/Nature-Envir.png",
-    imageAlt: "A person with a warm, joyful expression representing natural remedies.",
     accentColor: "text-[#4CAF50]",
     borderColor: "border-[#e8fff1]",
   },
@@ -32,7 +32,6 @@ const features = [
     description:
       "Long-term guidance for conditions like allergies, anxiety, and digestive issues.",
     imageSrc: "/images/Soulful-Treat.png",
-    imageAlt: "A thoughtful person representing supportive care.",
     accentColor: "text-[#8b5e3c]",
     borderColor: "border-[#f2edff]",
   },
@@ -42,130 +41,129 @@ const features = [
     description:
       "Empowering you with knowledge for sustainable health and preventive care.",
     imageSrc: "/images/Wellness.png",
-    imageAlt: "A happy person representing wellness education.",
     accentColor: "text-[#f1b52b]",
     borderColor: "border-[#fff7e6]",
   },
 ];
 
-// --- Framer Motion Variants ---
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
+export  function FeaturedServices() {
+  const rootRef = useRef(null);
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
-};
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
 
-const textVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
+    // clear any previous triggers (useful in HMR)
+    ScrollTrigger.getAll().forEach((t) => t.kill(true));
 
-export function FeaturedServices() {
+    // timeline controls header then cards
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: root,
+        start: "top 80%",    // enter when top of section hits 80% of viewport
+        end: "bottom 40%",   // optional end
+        toggleActions: "play none none reverse",
+        // markers: true, // uncomment for debugging
+      },
+    });
+
+    // header: fade + up
+    tl.from(root.querySelectorAll(".fs-header"), {
+      y: 30,
+      opacity: 0,
+      duration: 0.7,
+      ease: "power3.out",
+      stagger: 0.08,
+    });
+
+    // cards: scale & rise with nice easing and slight overlap
+    tl.from(
+      root.querySelectorAll(".fs-card"),
+      {
+        y: 50,
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.9,
+        ease: "expo.out",
+        stagger: { each: 0.16, from: "start" },
+      },
+      "-=0.25"
+    );
+
+    // small 3D settle (very subtle) to give a tactile feel
+    tl.to(
+      root.querySelectorAll(".fs-card"),
+      {
+        rotateX: 0,
+        rotateY: 0,
+        duration: 0.6,
+        ease: "sine.out",
+      },
+      "-=0.6"
+    );
+
+    return () => {
+      // cleanup
+      tl.kill();
+      ScrollTrigger.getAll().forEach((t) => t.kill(true));
+    };
+  }, []);
+
   return (
-    <motion.section
+    <section
+      ref={rootRef}
       id="featured-services"
       className="bg-[#fcfaf7] dark:bg-neutral-900 py-16 md:py-24"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={containerVariants}
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
-        {/* Header */}
-        <div className="text-center mb-16 max-w-3xl mx-auto">
-          <motion.p
-            className="inline-block px-4 py-2 rounded-full text-sm font-medium text-[#6b4a36] bg-[#f5e6db] mb-4"
-            variants={textVariants}
-          >
+        {/* header */}
+        <div className="text-center mb-12 max-w-3xl mx-auto">
+          <p className="fs-header inline-block px-4 py-2 rounded-full text-sm font-medium text-[#6b4a36] bg-[#f5e6db] mb-4">
             PEACEFUL BEGINNING
-          </motion.p>
+          </p>
 
-          <motion.h2
-            className="text-4xl md:text-5xl font-extrabold font-ubuntu leading-tight text-[#3b2f2f] mb-4"
-            variants={textVariants}
-            transition={{ delay: 0.1 }}
-          >
-            Embrace your{" "}
-            <span className="text-[#8b5e3c]">inner harmony</span>
-          </motion.h2>
+          <h2 className="fs-header text-3xl sm:text-4xl md:text-5xl font-extrabold font-ubuntu leading-tight text-[#3b2f2f] mb-4">
+            Embrace your <span className="text-[#8b5e3c]">inner harmony</span>
+          </h2>
 
-          <motion.p
-            className="text-lg text-gray-700 dark:text-gray-300"
-            variants={textVariants}
-            transition={{ delay: 0.2 }}
-          >
+          <p className="fs-header text-lg text-gray-700 dark:text-gray-300">
             Discover a balanced approach to wellness with personalized care and natural solutions.
-          </motion.p>
+          </p>
         </div>
 
-        {/* Features Grid */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12"
-          variants={containerVariants}
-        >
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.id}
-              className="text-center group"
-              variants={itemVariants}
-              transition={{ delay: index * 0.15 }}
+        {/* grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+          {features.map((f) => (
+            <article
+              key={f.id}
+              className="fs-card text-center group transform-gpu will-change-transform"
+              aria-labelledby={`fs-title-${f.id}`}
             >
-              {/* Circular Image Container */}
-              <motion.div
-                className={`relative mx-auto mb-6 rounded-full border-[3px] ${feature.borderColor} flex items-center justify-center overflow-hidden`}
-                style={{
-                  width: "7rem",
-                  height: "7rem",
-                  minWidth: "7rem",
-                  minHeight: "7rem",
-                }}
-                whileHover={{ scale: 1.08, transition: { duration: 0.3 } }}
-                whileTap={{ scale: 0.95 }}
+              <div
+                className={`relative mx-auto mb-6 rounded-full border-[3px] ${f.borderColor} flex items-center justify-center overflow-hidden`}
+                style={{ width: 112, height: 112, minWidth: 112, minHeight: 112 }}
               >
                 <Image
-                  src={feature.imageSrc}
-                  alt={feature.imageAlt}
+                  src={f.imageSrc}
+                  alt={f.title}
                   fill
-                  className="object-cover rounded-full"
+                  className="object-cover pointer-events-none rounded-full"
                   sizes="(max-width: 768px) 80px, (max-width: 1024px) 100px, 112px"
                   priority
                 />
+              </div>
 
-                {/* Decorative Elements */}
-                {index === 0 && (
-                  <div
-                    className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-[#f2edff] opacity-70 blur-sm"
-                    aria-hidden="true"
-                  />
-                )}
-                {index === 1 && (
-                  <div
-                    className="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-[#fff7e6] opacity-70 blur-sm"
-                    aria-hidden="true"
-                  />
-                )}
-              </motion.div>
-
-              {/* Title + Description */}
-              <h3
-                className={`text-xl font-bold font-ubuntu mb-2 ${feature.accentColor}`}
-              >
-                {feature.title}
+              <h3 id={`fs-title-${f.id}`} className={`text-xl font-bold font-ubuntu mb-2 ${f.accentColor}`}>
+                {f.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 max-w-[250px] mx-auto">
-                {feature.description}
+
+              <p className="text-gray-600 dark:text-gray-400 max-w-[280px] mx-auto">
+                {f.description}
               </p>
-            </motion.div>
+            </article>
           ))}
-        </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

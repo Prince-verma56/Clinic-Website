@@ -12,7 +12,7 @@ function CapsuleModel({ onLoaded }) {
     // Smooth rotation with tilt
     useFrame(() => {
         if (modelRef.current) {
-            modelRef.current.rotation.y += 0.01;
+            modelRef.current.rotation.y += 0.02;
             modelRef.current.rotation.x = Math.PI / 8;
             modelRef.current.rotation.z = Math.PI / 4;
         }
@@ -25,26 +25,22 @@ export default function ModelViewer() {
     const [loaded, setLoaded] = useState(false);
 
     return (
-        <div className="relative w-full h-full flex items-center justify-center">
+        <div className="relative w-full h-full flex items-center justify-center ">
             {/* Circular container */}
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-[#f6dcc8] to-[#fff] cursor-pointer shadow-lg flex items-center justify-center overflow-hidden">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-transparent cursor-pointer backdrop-blur-sm  flex items-center justify-center overflow-hidden">
                 {/* 🖼️ Placeholder until 3D model loads */}
                 {!loaded && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#fefaf7]">
-                        <Image
-                            src="/images/icons/CapsuleIcon.png" // 👈 Put your fallback image path here
-                            alt="Loading model..."
-                            fill
-                            className="object-contain animate-pulse"
-                            priority={false}
-                        />
+                    <div className="absolute  inset-0 flex items-center justify-center">
+
+                        <h1 className="text-4xl">...</h1>
                     </div>
                 )}
 
                 {/* 🎨 3D Model Canvas */}
                 <Canvas camera={{ position: [0, 0, 3], fov: 45 }} style={{ background: "transparent" }}>
-                    <ambientLight intensity={0.4} />
-                    <directionalLight position={[5, 5, 5]} intensity={1.5} castShadow />
+                    <ambientLight intensity={0.4}  position={[5, 5, 5]}/>
+                    <ambientLight intensity={0.9} />
+                    <directionalLight position={[5, 5, 5]} intensity={1.5} />
                     <directionalLight position={[-5, 2, 5]} intensity={1.0} />
                     <directionalLight position={[0, 5, -5]} intensity={0.8} />
 

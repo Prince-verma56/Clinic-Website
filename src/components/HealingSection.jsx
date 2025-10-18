@@ -328,7 +328,7 @@ export function HealingSection() {
                                     className="group w-full rounded-3xl shadow-2xl overflow-hidden bg-white dark:bg-neutral-900 border border-gray-200/50 dark:border-neutral-800 cursor-pointer hover:shadow-emerald-500/20 transition-shadow duration-500"
                                 >
                                     {/* Image Section with Enhanced Hover Effects */}
-                                    <div className="relative w-full h-[280px] overflow-hidden">
+                                    <div className="relative w-full h-[280px] overflow-hidden pointer-events-none">
                                         <motion.img
                                             src={activeFocus.imageUrl}
                                             alt={activeFocus.imageAlt}
@@ -362,7 +362,7 @@ export function HealingSection() {
                                     </div>
 
                                     {/* Content Section with Smooth Transitions */}
-                                    <CardContent className="px-6 py-6 space-y-4">
+                                    <CardContent className="px-6 py-6 space-y-4 shadow-[inset_-12px_-8px_40px_#46464620]">
                                         <motion.div
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}

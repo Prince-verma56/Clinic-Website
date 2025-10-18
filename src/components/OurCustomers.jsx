@@ -55,7 +55,7 @@ export function OurCustomers() {
                     {testimonials.map((test, index) => (
                         <motion.div
                             key={test.id}
-                            className={`${test.positionClass} rounded-2xl overflow-hidden backdrop-blur-sm bg-white/10 dark:bg-gray-800/10 transition-transform hover:scale-105 border border-white/50 dark:border-gray-700/50`}
+                            className={`${test.positionClass} pointer-events-none rounded-2xl overflow-hidden backdrop-blur-sm bg-white/10 dark:bg-gray-800/10 transition-transform hover:scale-105 border border-white/50 dark:border-gray-700/50`}
                             variants={floatVariants(index * 0.1)}
                             initial="initial"
                             whileInView="animate"

@@ -156,7 +156,7 @@ export function TestimonialsSection() {
                 className={`relative w-full aspect-[4/5] rounded-[30px] shadow-2xl overflow-hidden ${activeTestimonial.bgColor}`}
               >
                 {/* Image */}
-                <div className="absolute inset-0 w-full h-full">
+                <div className="absolute inset-0 w-full h-full pointer-events-none">
                   {/* <Image src={activeTestimonial.imagePath} alt={activeTestimonial.imageAlt} className="object-cover w-full h-full" /> */}
                   <img
                     src={activeTestimonial.imagePath}

@@ -32,9 +32,9 @@ const staggerContainer = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
+  visible: {
+    opacity: 1,
+    y: 0,
     scale: 1,
     transition: {
       type: "spring",
@@ -130,9 +130,11 @@ export default function ContactAndInfo() {
   return (
     <div className="w-full">
       {/* ---------- HERO HEADING SECTION ---------- */}
-      <section className="relative min-h-[60vh] flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#fdf6e3] to-[#f7e9d7] px-6 py-20 overflow-hidden">
-        <Toaster position="top-right" />
-
+<section
+  style={{ backgroundImage: "url(/images/Backgrounds/GreenBgH.png)", backgroundSize: 'cover', backgroundPosition: 'center' , opacity: 0.80}}
+  className="relative min-h-[60vh] flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#fdf6e3] to-[#f7e9d7] px-6 py-20 overflow-hidden"
+>
+  <Toaster position="top-right" />
         {/* Back Button */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -180,14 +182,14 @@ export default function ContactAndInfo() {
 
         {/* Animated Heading */}
         <motion.h1
-          className="text-4xl md:text-6xl font-bold text-[#3b2f2f] leading-tight mb-6 mt-6 max-w-4xl"
+          className="text-4xl md:text-6xl font-bold text-[#38040e] leading-tight mb-6 mt-6 max-w-4xl"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
         >
           <span className="block">Appointment Book Karein</span>
-          <span className="block bg-gradient-to-r from-[#8b5e3c] to-[#6b4a36] bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r from-[#403d39] to-[#38040e] bg-clip-text text-transparent">
             Ya Sawal Poochein
           </span>
         </motion.h1>
@@ -200,7 +202,7 @@ export default function ContactAndInfo() {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          Humein message bhejein aur hum jald hi aapse sampark karenge. 
+          Humein message bhejein aur hum jald hi aapse sampark karenge.
           <span className="block mt-2 text-[#8b5e3c] font-semibold">Aapka swagat hai!</span>
         </motion.p>
 
@@ -216,12 +218,12 @@ export default function ContactAndInfo() {
 
       {/* ---------- FORM SECTION ---------- */}
       <section
-              style={{ backgroundImage: "url('/images/Backgrounds/ClockAndCal.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
+        style={{ backgroundImage: "url('/images/Backgrounds/ClockAndCal.png')", backgroundSize: 'cover', backgroundPosition: 'center' }}
 
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fcfbf9] to-[#f7f3e9] py-20 px-4">
+        className="relative pointer-events-none min-h-screen flex items-center justify-center bg-gradient-to-br from-[#fcfbf9] to-[#f7f3e9] py-20 px-4">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_48%,rgba(139,94,60,0.02)_50%,transparent_52%)] bg-[size:50px_50px]" />
-        
+
         <motion.div
           className="relative w-full max-w-6xl bg-white rounded-3xl shadow-2xl p-8 md:p-12 grid md:grid-cols-2 gap-12 items-start backdrop-blur-sm"
           initial="hidden"
@@ -320,11 +322,10 @@ export default function ContactAndInfo() {
                       key={slot.time}
                       type="button"
                       onClick={() => setFormData({ ...formData, time: slot.time })}
-                      className={`px-4 py-3 rounded-xl border-2 font-medium transition-all duration-300 ${
-                        formData.time === slot.time
+                      className={`px-4 py-3 rounded-xl border-2 font-medium transition-all duration-300 ${formData.time === slot.time
                           ? 'bg-[#8b5e3c] text-white border-[#8b5e3c] shadow-lg scale-105'
                           : 'border-gray-300 text-gray-700 hover:border-[#8b5e3c] hover:bg-[#8b5e3c]/5 hover:scale-105'
-                      }`}
+                        }`}
                     >
                       {slot.label}
                     </button>
@@ -360,7 +361,7 @@ export default function ContactAndInfo() {
               Why Trust <span className="text-[#8b5e3c]">Dr. Devesh Kumar Garg</span>?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              With decades of expertise in classical homeopathy, we provide comprehensive healing 
+              With decades of expertise in classical homeopathy, we provide comprehensive healing
               that addresses root causes while ensuring complete patient satisfaction.
             </p>
           </motion.div>
@@ -377,15 +378,15 @@ export default function ContactAndInfo() {
               <motion.div
                 key={index}
                 variants={cardVariants}
-                whileHover={{ 
-                  y: -8, 
+                whileHover={{
+                  y: -8,
                   scale: 1.02,
                   transition: { duration: 0.3 }
                 }}
                 className="relative group"
               >
                 <div className={`relative bg-white rounded-3xl p-8 shadow-2xl border border-[#8b5e3c]/10 hover:shadow-3xl transition-all duration-500 h-full flex flex-col ${feature.bgColor}`}>
-                  
+
                   {/* Icon Container */}
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.color} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                     <div className="text-white">
@@ -397,7 +398,7 @@ export default function ContactAndInfo() {
                   <h3 className="text-2xl font-bold text-[#3b2f2f] mb-4 leading-tight">
                     {feature.title}
                   </h3>
-                  
+
                   <p className="text-gray-600 leading-relaxed mb-6 flex-grow">
                     {feature.description}
                   </p>

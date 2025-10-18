@@ -44,7 +44,9 @@ export default function AboutDoctor() {
     return (
         <section
             className="relative w-full py-20 md:py-28 px-6 sm:px-8 lg:px-12 overflow-hidden"
-            style={{ backgroundColor: theme.secondary }}
+            // style={{ backgroundColor: theme.secondary }}
+              style={{ backgroundImage: "url(/images/Backgrounds/BeigeAbout.jpg)", backgroundSize: 'cover', backgroundPosition: 'center' }}
+
         >
 
             <motion.div
@@ -184,7 +186,7 @@ export default function AboutDoctor() {
                         <Card className="p-4 md:p-6 shadow-2xl rounded-[2.5rem] border border-gray-200 bg-white">
                             <div className="overflow-hidden rounded-[3rem] border-[6px] border-[#f1e7d6] aspect-[3/4] flex items-center justify-center">
                                 <Image
-                                    src="/images/DoctDevesh.jpg"
+                                    src="/images/UpdatedDrDev.jpg"
                                     alt="Dr. Devesh Kumar Garg"
                                     width={420}
                                     height={520}
@@ -205,7 +207,7 @@ export default function AboutDoctor() {
                                     className="text-sm font-medium tracking-wide"
                                     style={{ color: theme.primary }}
                                 >
-                                    MD (Homeopathy)
+                                    B.H.M.S
                                 </p>
                                 <p className="text-xs text-gray-500 mt-1">
                                     Healing lives since 2008 · India

@@ -6,35 +6,11 @@
 
 
 
-
-/* body {
-  --sb-track-color: #232E33;
-  --sb-thumb-color: #c39d68;
-  --sb-size: 7px;
+::selection {
+    background-color: #fbc380;
+    color: #676767;
+    -webkit-text-fill-color: #101010;
 }
-
-body::-webkit-scrollbar {
-  width: var(--sb-size)
-}
-
-body::-webkit-scrollbar-track {
-  background: var(--sb-track-color);
-  border-radius: 8px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--sb-thumb-color);
-  border-radius: 8px;
-  
-}
-
-@supports not selector(::-webkit-scrollbar) {
-  body {
-    scrollbar-color: var(--sb-thumb-color)
-                     var(--sb-track-color);
-  }
-} */
-
 
 
 
