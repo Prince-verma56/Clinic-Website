@@ -3,24 +3,24 @@ const nextConfig = {
   reactStrictMode: true, // Helps catch potential bugs in development
   swcMinify: true,       // Enables faster and smaller production builds
 
-  // Image optimization setup
+  // ✅ Correct Image Optimization Setup
   images: {
     formats: ['image/webp', 'image/avif'],
-    unoptimized: false,  // Keep it false to allow Next.js to optimize automatically
+    unoptimized: false, // keep it false for Next.js to handle optimization
     domains: [
-      'https://dr-devesh-homeoclinic.vercel.app/',  // Replace with your actual domain (when deployed)
-      'res.cloudinary.com', // Example if you use external images
+      'dr-devesh-homeoclinic.vercel.app',
+      'res.cloudinary.com',
     ],
   },
 
-  // Experimental (optional performance enhancements)
+  // Experimental optimizations
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['three', 'framer-motion'],
   },
 
-  // Optional if you’ll use static regeneration for pages
-  output: 'standalone', // Makes deployment faster and lighter
+  // Static output optimization
+  output: 'standalone',
 };
 
 export default nextConfig;
