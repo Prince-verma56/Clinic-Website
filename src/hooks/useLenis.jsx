@@ -7,7 +7,7 @@ const useLenis = () => {
   useEffect(() => {
     const lenis = new Lenis({
       container: document.querySelector('body'), // explicit container
-      duration: 4,
+      duration: 2.4,
       lerp: 0.1,
       // easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
