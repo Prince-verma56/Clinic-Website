@@ -17,15 +17,15 @@ export default function Page() {
 
       {/* Hero Section */}
       <section
-        class="relative w-full flex items-center justify-center px-6 sm:px-10 md:px-16 lg:px-24 py-20 md:py-28 inset-0 
+        className="relative w-full flex items-center justify-center px-6 sm:px-10 md:px-16 lg:px-24 py-20 md:py-28 inset-0 
   bg-orange-100/20 
   bg-[linear-gradient(to_right,#faedcd_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] 
   bg-[size:24px_24px] overflow-hidden">
         <HeroSection />
 
-        <div class="absolute -left-32 top-1/2 -translate-y-1/2 w-80 h-80 bg-[#e6d5c3] opacity-50 blur-3xl rounded-full pointer-events-none"></div>
+        <div className="absolute -left-32 top-1/2 -translate-y-1/2 w-80 h-80 bg-[#e6d5c3] opacity-50 blur-3xl rounded-full pointer-events-none"></div>
 
-        <div class="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-[#d8bfa9] opacity-50 blur-3xl rounded-full pointer-events-none"></div>
+        <div className="absolute -right-32 top-1/2 -translate-y-1/2 w-96 h-96 bg-[#d8bfa9] opacity-50 blur-3xl rounded-full pointer-events-none"></div>
 
       </section>
 
